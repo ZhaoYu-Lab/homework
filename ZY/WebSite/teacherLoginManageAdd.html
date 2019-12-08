@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link href="css/bootstrap.css" rel="stylesheet">
+<title>增加教师登陆信息</title>
+<style type="text/css">
+
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+.juzhong{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -150px;
+    color: #999;
+}
+</style>
+</head>
+
+<body>
+
+ <form class="form-signin" id="teacherLoginManageAdd" action="teacherLoginManageAdd.php" method="post">
+    <label for = "text">账户:</label>
+    <input type="text"  name="addNum"><br>
+   <label for = "text">密码 :</label>
+   <input type="text"  name="addName">
+    <input type="submit" id = "addBtn" value="添加数据">
+     
+</form>
+
+</body>
+</html>

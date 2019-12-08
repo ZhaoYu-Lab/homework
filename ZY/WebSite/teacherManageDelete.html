@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link href="css/bootstrap.css" rel="stylesheet">
+<title>删除教师信息</title>
+</head>
+
+<body>
+
+<form id="teacherManageDelete" class="form-signin"  action="teacherManageDelete.php" method="post">
+
+   <label for = "text">&nbsp;姓名 :</label>
+   <input type="text" id ="teacherName" name="teacherName">
+
+    <input type="submit" id = "deleteBtn" value="删除数据">
+     
+</form>
+ 
+<script type="text/javascript">
+
+ function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    }
+     $(function(){
+      var teacherName = getURLParameter("teacherName");
+        if(teacherName!=null){
+        alert(teacherName);
+        $("#teacherName").attr("value",teacherName);
+    }
+     else $("#teacherName").attr("value","请输入教师姓名");
+
+      });
+
+ </script>
+</body>
+</html>

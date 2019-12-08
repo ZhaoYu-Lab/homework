@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>登陆成功-功能1</title>
+<style type="text/css">
+
+
+</style>
+</head>
+
+<body>
+
+<div id="div">
+<label for = "classNum">输入教室编号:</label>
+<input type="text" id="classNum"><button id="query">查询教室信息</button>
+
+</div>
+    
+  <ul id="list">
+        <!--数据将在这里显示-->
+    </ul>
+<script type="text/javascript">
+
+   
+   
+    function myQuery() {
+        var classNum=$("#classNum").val();
+      
+        $.ajax({
+            type: "post",//传递方法
+            url: "classManageQuery.php",//数据接口
+            data: {classNum:classNum},//提交到demo.php的数据
+            dataType: "json",//回调函数接收数据的数据格式
+            success:function (msg) {
+               
+                $('table').remove();
+                $("body").append("<table id='result' class='table table-bordered'><tr><th>教室编号</th><th>纬度</th><th>经度</th><th>修改信息</th><th>删除该用户</th></tr></table>");
+                for(var i =0;i<msg.length;i++)
+                {
+                    $("#result").append("<tr><th>"+msg[i]['classNum']+"</th><th>"+msg[i]['classLat']+"</th><th>"+msg[i]['classLon']+"</th><th><button class='update'>修改</button><th><button class='delete'>删除</button></th></tr>");
+                }
+                if (msg.length==0){
+                    $('table').remove();
+                    $('body').append('<p>无此结果</p>');
+                }
+              
+
+            },error:function () {
+                console.log("查询错误");
+            }
+        });
+
+    }
+    
+  
+
+   
+    $(function(){
+ 
+    
+        $("#query").click(function () {
+            myQuery();
+            $("#div").hide();
+        });
+       
+          $(document).on('click','.update',function () {
+         var classNum = $(this).parent().parent().children('th')[0] ////
+         var classNum = $(classNum).text();
+         // myChange($(stuNum).text());
+          window.location = "classManageChange.html?classNum=" + classNum;
+
+        });
+
+
+        $(document).on('click','.delete',function () {
+           var classNum = $(this).parent().parent().children('th')[0] ////
+           var classNum = $(classNum).text();
+         // myChange($(stuNum).text());
+          window.location = "classManageDelete.html?classNum=" + classNum;
+
+        });
+    
+    });
+
+
+</script>
+</body>
+</html>

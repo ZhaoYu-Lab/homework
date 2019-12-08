@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>删除教室信息</title>
+
+</head>
+
+<body>
+
+<form id="classManageDelete" class = "form-signin" action="classManageDelete.php" method="post">
+    <label for = "text">教室编号:</label>
+    <input type="text" name="classNum" name="classNum"><br>
+    <input type="submit" id = "deleteBtn" value="删除数据">
+</form>
+
+<script type="text/javascript">
+
+ function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    }
+     $(function(){
+      var classNum = getURLParameter("classNum");
+        if(classNum!=null){
+        alert(classNum);
+        $("#classNum").attr("value",classNum);
+    }
+     else $("#classNum").attr("value","请输入教室编号");
+
+      });
+
+ </script>
+</body>
+</html>

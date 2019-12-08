@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>显示所有学生登陆账户信息</title>
+
+</head>
+
+<body>
+
+
+<script type="text/javascript">
+
+    function refreash() {
+        $.ajax({
+            type: "post",//传递方法
+            url: "showAllStudentAccount.php",//数据接口
+            dataType: "json",//接收格式
+            success: function(msg)//如果接收成功执行以下
+            {
+                $('table').remove();
+                $("body").append("<table id='result'  class='table table-bordered'><tr><th>用户名</th><th>密码</th><th>修改密码</th><th>删除该用户</th></tr></table>");
+                for(var i =0;i<msg.length;i++)
+                {
+                    $("#result").append("<tr><th>"+msg[i]['Account']+"</th><th>"+msg[i]['Pwd']+"</th><th><button class='update'>修改</button><th><button class='delete'>删除</button></th></tr>");
+                }
+            },
+            error:function()//如果接收不成功执行以下
+            {
+                console.log("链接错误")
+            }
+        });
+    }  
+   
+   
+    $(function(){
+        refreash();
+       
+          $(document).on('click','.update',function () {
+         var stuNum = $(this).parent().parent().children('th')[0] ////获取账户名称
+         var studentNum = $(stuNum).text();
+         // myChange($(stuNum).text());
+          window.location = "studentLoginManageChange.html?studentNum=" + studentNum;
+
+        });
+
+        $(document).on('click','.delete',function () {
+         
+            var stuNum = $(this).parent().parent().children('th')[0] //
+            var studentNum = $(stuNum).text();//获取账户名称        
+           window.location = "studentLoginManageDelete.html?studentNum=" + studentNum;
+
+        });
+    
+    });
+
+
+</script>
+</body>
+</html>

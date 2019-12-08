@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link href="css/bootstrap.css" rel="stylesheet">
+<title>删除课程信息</title>
+
+</head>
+
+<body>
+   
+    <form id="courseManageDelete" action="courseManageDelete.php" method="post">
+    <label for = "courseName">课程名称 :</label><br>
+    <input type="text" id ="courseName" name="courseName">
+    <input type="submit" id = "deleteBtn" value="删除数据">
+     
+</form>
+
+<script type="text/javascript">
+
+ function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    }
+     $(function(){
+      var courseName = getURLParameter("courseName");
+        if(courseName!=null){
+        alert(courseName);
+        $("#courseName").attr("value",courseName);
+    }
+     else $("#courseName").attr("value","请输入课程名称");
+
+      });
+
+ </script>
+</body>
+</html>

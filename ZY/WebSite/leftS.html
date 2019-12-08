@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>教师管理网站</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="jquery.js"></script>
+
+<script type="text/javascript">
+$(function(){	
+	//导航切换
+	$(".menuson li").click(function(){
+		$(".menuson li.active").removeClass("active")
+		$(this).addClass("active");
+	});
+	
+	$('.title').click(function(){
+		var $ul = $(this).next('ul');
+		$('dd').find('ul').slideUp();
+		if($ul.is(':visible')){
+			$(this).next('ul').slideUp();
+		}else{
+			$(this).next('ul').slideDown();
+		}
+	});
+})	
+</script>
+
+
+</head>
+
+<body style="background:#f0f9fd;">
+	<div class="lefttop"><span></span>功能菜单</div>
+    
+    <dl class="leftmenu">
+    <dd>
+    <div class="title">
+    <span><img src="images/leftico01.png" /></span>管理学生账户信息
+    </div>
+    	<ul class="menuson">
+        <li class="active"><cite></cite><a href="indexS.html" target="rightFrame">导航</a><i></i></li>
+         <li ><cite></cite><a href="showAllStudentAccount.html" target="rightFrame">显示所有学生账户信息</a><i></i></li>
+        <li ><cite></cite><a href="studentLoginManageAdd.html" target="rightFrame">增加学生账户信息</a><i></i></li>
+        <li ><cite></cite><a href="studentLoginManageDelete.html" target="rightFrame">删除学生账户信息</a><i></i></li>
+        <li><cite></cite><a href="studentLoginManageChange.html" target="rightFrame">修改学生账户信息</a><i></i></li>
+         <li><cite></cite><a href="studentLoginManageQuery.html" target="rightFrame">查询学生账户信息</a><i></i></li>
+
+        </ul>    
+    </dd>
+    <dd>
+    <div class="title">
+    <span><img src="images/leftico02.png" /></span>管理教师账户信息
+    </div>
+   <ul class="menuson">
+        <li class="active"><cite></cite><a href="indexS.html" target="rightFrame">导航</a><i></i></li>
+         <li ><cite></cite><a href="showAllTeacherAccount.html" target="rightFrame">显示所有教师账户信息</a><i></i></li>
+        <li ><cite></cite><a href="teacherLoginManageAdd.html" target="rightFrame">增加教师账户信息</a><i></i></li>
+        <li ><cite></cite><a href="teacherLoginManageDelete.html" target="rightFrame">删除教师账户信息</a><i></i></li>
+        <li><cite></cite><a href="teacherLoginManageChange.html" target="rightFrame">修改教师账户信息</a><i></i></li>
+         <li><cite></cite><a href="teacherLoginManageQuery.html" target="rightFrame">查询教师账户信息</a><i></i></li>
+
+        </ul>      
+    </dd> 
+    
+    
+    <dd><div class="title"><span><img src="images/leftico03.png" /></span>管理学生个人信息</div>
+    <ul class="menuson">
+        <li class="active"><cite></cite><a href="indexS.html" target="rightFrame">导航</a><i></i></li>
+         <li ><cite></cite><a href="showAllStudent.html" target="rightFrame">显示所有学生信息</a><i></i></li>
+        <li ><cite></cite><a href="studentManageAdd.html" target="rightFrame">增加学生信息</a><i></i></li>
+        <li ><cite></cite><a href="studentManageDelete.html" target="rightFrame">删除学生信息</a><i></i></li>
+        <li><cite></cite><a href="studentManageChange.html" target="rightFrame">修改学生信息</a><i></i></li>
+         <li><cite></cite><a href="studentManageQuery.html" target="rightFrame">查询学生信息</a><i></i></li>
+
+        </ul>    
+    </dd>  
+    
+    
+    <dd><div class="title"><span><img src="images/leftico04.png" /></span>管理教师个人信息</div>
+    <ul class="menuson">
+        <li class="active"><cite></cite><a href="indexS.html" target="rightFrame">导航</a><i></i></li>
+         <li ><cite></cite><a href="showAllTeacher.html" target="rightFrame">显示所有教师信息</a><i></i></li>
+        <li ><cite></cite><a href="teacherManageAdd.html" target="rightFrame">增加教师信息</a><i></i></li>
+        <li ><cite></cite><a href="teacherManageDelete.html" target="rightFrame">删除教师信息</a><i></i></li>
+        <li><cite></cite><a href="teacherManageChange.html" target="rightFrame">修改教师信息</a><i></i></li>
+         <li><cite></cite><a href="teacherManageQuery.html" target="rightFrame">查询教师信息</a><i></i></li>
+
+        </ul>    
+    </dd>
+
+    <dd><div class="title"><span><img src="images/leftico04.png" /></span>管理学院课程信息</div>
+    <ul class="menuson">
+        <li class="active"><cite></cite><a href="indexS.html" target="rightFrame">导航</a><i></i></li>
+         <li ><cite></cite><a href="showAllCourse.html" target="rightFrame">显示学院课程信息</a><i></i></li>
+        <li ><cite></cite><a href="courseManageAdd.html" target="rightFrame">增加学院课程信息</a><i></i></li>
+        <li ><cite></cite><a href="courseManageDelete.html" target="rightFrame">删除学院课程信息</a><i></i></li>
+        <li><cite></cite><a href="courseManageChange.html" target="rightFrame">修改学院课程信息</a><i></i></li>
+         <li><cite></cite><a href="courseManageQuery.html" target="rightFrame">查询学院课程信息</a><i></i></li>
+
+        </ul>    
+    </dd>
+
+    <dd><div class="title"><span><img src="images/leftico04.png" /></span>管理学院教室信息</div>
+   <ul class="menuson">
+        <li class="active"><cite></cite><a href="indexS.html" target="rightFrame">导航</a><i></i></li>
+         <li ><cite></cite><a href="showAllClass.html" target="rightFrame">显示所有学院教室信息</a><i></i></li>
+        <li ><cite></cite><a href="classManageAdd.html" target="rightFrame">增加学院教室信息</a><i></i></li>
+        <li ><cite></cite><a href="classManageDelete.html" target="rightFrame">删除学院教室信息</a><i></i></li>
+        <li><cite></cite><a href="classManageChange.html" target="rightFrame">修改学院教室信息</a><i></i></li>
+         <li><cite></cite><a href="classManageQuery.html" target="rightFrame">查询学院教室信息</a><i></i></li>
+
+        </ul>    
+    </dd>
+     <dd><div class="title"><span><img src="images/leftico04.png" /></span>管理学生绑定信息</div>
+   <ul class="menuson">
+        <li class="active"><cite></cite><a href="indexS.html" target="rightFrame">导航</a><i></i></li>
+         <li ><cite></cite><a href="showAllBind.html" target="rightFrame">显示所有学生学号和一卡通绑定信息</a><i></i></li>
+        <li ><cite></cite><a href="bindManageAdd.html" target="rightFrame">增加学号绑定信息</a><i></i></li>
+        <li ><cite></cite><a href="bindManageDelete.html" target="rightFrame">删除学号绑定信息</a><i></i></li>
+        <li><cite></cite><a href="bindManageChange.html" target="rightFrame">修改学号绑定信息</a><i></i></li>
+         <li><cite></cite><a href="bindManageQuery.html" target="rightFrame">查询学号绑定信息</a><i></i></li>
+
+        </ul>    
+    </dd>
+    </dl>
+
+</body>
+</html>

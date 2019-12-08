@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改绑定信息</title>
+
+</head>
+
+<body>
+
+
+
+<form id="bindManageChange" action="bindManageChange.php" method="post">
+  <label for = "bindNum">学号:</label><br>
+<input type="text" id="bindNum" name="bindNum"><br>
+
+<label for = "bindName">一卡通:</label><br>
+<input type="text"  name="bindName"><br>
+  
+
+<input type="submit" id = "changeBtn" value="修改数据">
+     
+</form>
+
+<script type="text/javascript">
+
+ function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    }
+     $(function(){
+      var bindNum = getURLParameter("bindNum");
+        if(bindNum!=null){
+        alert(bindNum);
+        $("#bindNum").attr("value",bindNum);
+    }
+     else $("#bindNum").attr("value","请输入学号");
+
+      });
+     
+
+ </script>
+</body>
+</html>

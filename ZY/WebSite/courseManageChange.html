@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link href="css/bootstrap.css" rel="stylesheet">
+<title>修改课程信息</title>
+
+</head>
+
+<body>
+
+ <form id="courseManageChange" class= "form-signin"action="courseManageChange.php" method="post">
+ <label for = "courseNum">课程编号:</label><br>
+<input type="text" id="courseNum" name="courseNum"><br>
+<label for = "courseName">课程名称:</label><br>
+<input type="text" id="courseName"><br>
+<input type="submit" id = "change" value="修改数据">
+     
+</form>
+
+<script type="text/javascript">
+
+ function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    }
+     $(function(){
+      var courseNum = getURLParameter("courseNum");
+        if(courseNum!=null){
+        alert(courseNum);
+        $("#courseNum").attr("value",courseNum);
+    }
+     else $("#courseNum").attr("value","请输入课程编号");
+
+      });
+
+ </script>
+</body>
+</html>

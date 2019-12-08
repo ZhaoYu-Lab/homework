@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+   <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登陆</title>
+ <link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/myLogin.css" rel="stylesheet">
+<style type="text/css">
+</style>
+</head>
+
+<body>
+<div class="login">
+<p><img src="login.png" width="200" height="100" /></p>
+ 
+ <form class="form-signin" name="teacherLogin" action="teacherLogin.php" method="post">
+    <h2 class="form-signin-heading"> 登录</h2>
+               <label for = "username">用户名:</label><input type="text" id ="username" name="uname"class="input-block-level"><br>
+   <label for = "pass">&nbsp;<br />
+    密&nbsp; 码 :</label>
+   <input type="password" id ="pass" name="pass"class="input-block-level">
+               
+        <br><input type="radio" name="role" value="教师" checked>教师
+        <input type="radio" name="role" value="辅导员">辅导员<br>
+        <input type="submit" id = "btn" value="登陆" class="btn btn-large btn-primary">
+        
+</form>
+
+</div>
+</body>
+
+
+</html>

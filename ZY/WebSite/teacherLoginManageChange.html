@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link href="css/bootstrap.css" rel="stylesheet">
+<title>登陆成功-功能1</title>
+
+</head>
+
+<body>
+
+ <form class="form-signin" id="teacherLoginManageChange"  action="teacherLoginManageChange.php" method="post">
+               <label for = "teacherNum">&nbsp; 用 户 名:</label><input type="text" id="teacherNum" name="teacherNum"><br><br>
+                 <label for = "Pwd">&nbsp;  密 码:</label><input type="password"  name="Pwd"><br><br>
+                <input type="submit" id = "changeBtn" value="修改数据">
+</form>
+    
+<script type="text/javascript">
+
+ function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    }
+     $(function(){
+      var teacherNum = getURLParameter("teacherNum");
+        if(teacherNum!=null){
+        alert(teacherNum);
+        $("#teacherNum").attr("value",teacherNum);
+    }
+     else $("#teacherNum").attr("value","请输入教师一卡通号");
+
+      });
+
+ </script>
+
+</body>
+</html>

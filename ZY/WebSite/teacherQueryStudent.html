@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+		<script src="jquery.min.js"></script>
+   <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>登陆成功-功能2</title>
+<style type="text/css">
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+.divForm{
+    position: absolute;
+    width: 329px;
+    height: 231px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -150px;
+}
+</style>
+</head>
+
+<body>
+<div class="divForm">
+
+<label for = "studentName">输入学生姓名:</label>
+<input type="text" id="studentName"><br><br>
+<label for = "studentClass">输入学生所在班级 :</label>
+        <input type="text" id="studentClass"><br><br>
+<label for = "starTime">输入起始时间:</label>
+        <input type="datetime-local" id="starTime"><br><br>
+        <label for = "endTime">输入结束时间:</label>
+        <input type="datetime-local" id="endTime"><br><br>
+    <button id="query">查询</button>
+
+    </div>
+
+<script type="text/javascript">
+   
+  
+    function myQuery() {
+        var studentName=$("#studentName").val();
+        var studentClass=$("#studentClass").val();
+        var starTime=$("#starTime").val();
+        var endTime=$("#endTime").val();
+        $.ajax({
+            type: "post",//传递方法
+            url: "teacherQueryStudent.php",//数据接口
+            data: {studentName:studentName,studentClass:studentClass,starTime:starTime,endTime:endTime},//
+      	    dataType: "json",//回调函数接收数据的数据格式
+            success:function (msg) {
+               
+                $('table').remove();
+                $("body").append("<table id='result' class='table table-bordered'><tr><th>序号</th><th>签到时间</th><th>学生学号</th><th>课程编号</th><th>教师编号</th><th>课程开始时间</th><th>课程结束时间</th><th>学生班级</th><th>学生院系</th><th>签到状态</th><th>发送邮件</th></tr></table>");
+                for(var i =0;i<msg.length;i++)
+                {
+                    $("#result").append("<tr><th>"+msg[i]["_id"]+"</th><th>"+msg[i]['signTime']+"</th><th>"+msg[i]['studentNum']+"</th><th>"+msg[i]['courseNum']+"</th><th>"+msg[i]['teacherNum']+"</th><th>"+msg[i]['startTime']+"</th><th>"+msg[i]['endTime']+"</th><th>"+msg[i]['studentClass']+"</th><th>"+msg[i]['studentDepart']+"</th><th>"+msg[i]['classState']+"</th><th><button class='operate'>发送邮件</button></th></tr>");
+                }
+                if (msg.length==0){
+                    $('table').remove();
+                    $('body').append('<p>无此结果</p>');
+                }
+
+            },error:function () {
+                console.log("查询错误");
+            }
+        });
+
+    }
+    function sendMail(stuNum) {
+        var choosen=$(stuNum).text();
+        $.ajax({
+           type:"post",
+           url:"sendMail.php",
+            data:{choosen:choosen},
+            success:function (msg) {
+               // refreash();//刷新
+               alert("成功");
+            },
+            error:function () {
+                console.log("错误");
+            }
+        });
+    }
+
+    $(function(){
+    
+        $("#query").click(function () {
+      /*  var studentName=$("#studentName").val();
+        var studentClass=$("#studentClass").val();
+        var starTime=$("#starTime").val();
+        var endTime=$("#endTime").val();
+        alert(studentName);*/
+
+        myQuery();
+
+        $(".divForm").hide();
+
+        });
+
+        $(document).on('click','.operate',function () {
+            //var id=$(this).parent().parent().children('th')[0]; //获取_id序号
+            var stuNum = $(this).parent().parent().children('th')[2] ////获取学生学号  然后查询邮箱发送预警
+           //alert($(id).text());
+           //alert($(stuNum).text());
+           sendMail(stuNum);
+        });
+
+        });
+
+
+
+     
+    
+
+</script>
+
+</body>
+</html>

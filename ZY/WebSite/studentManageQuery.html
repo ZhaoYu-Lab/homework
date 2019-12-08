@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>查询学生基本信息</title>
+<style type="text/css">
+
+
+</style>
+</head>
+
+<body>
+
+<div id="div">
+<label for = "studentName">输入学生姓名:</label>
+<input type="text" id="studentName"><button id="query">按姓名查询学生相关信息</button>
+
+
+</div>
+
+<script type="text/javascript">
+
+   
+    function myQuery() {
+        var studentName=$("#studentName").val();
+      
+        $.ajax({
+            type: "post",//传递方法
+            url: "studentManageQuery.php",//数据接口
+            data: {studentName:studentName},//提交到demo.php的数据
+            dataType: "json",//回调函数接收数据的数据格式
+            success:function (msg) {
+
+                $('table').remove();
+                $("body").append("<table id='result' class='table table-bordered'><tr><th>学号</th><th>姓名</th><th>性别</th><th>班级</th><th>学院</th><th>邮箱</th><th>修改信息</th><th>删除该用户</th></tr></table>");
+                for(var i =0;i<msg.length;i++)
+                {
+                    $("#result").append("<tr><th>"+msg[i]['studentNum']+"</th><th>"+msg[i]['studentName']+"</th><th>"+msg[i]['studentSex']+"</th><th>"+msg[i]['studentClass']+"</th><th>"+msg[i]['studentDepart']+"</th><th>"+msg[i]['studentMail']+"</th><th><button class='update'>修改</button><th><button class='delete'>删除</button></th></tr>");
+                }
+                if (msg.length==0){
+                    $('table').remove();
+                    $('body').append('<p>无此结果</p>');
+                }
+              
+
+            },error:function () {
+                console.log("查询错误");
+            }
+        });
+
+    }
+     
+
+   
+    $(function(){
+      
+    
+        $("#query").click(function () {
+            myQuery();
+            $("#div").hide();
+        });
+       
+          $(document).on('click','.update',function () {
+         var studentNum = $(this).parent().parent().children('th')[0] ////获取学号进行删除
+         var studentNum = $(studentNum).text();
+         // myChange($(stuNum).text());
+          window.location = "studentManageChange.html?studentNum=" + studentNum;
+
+        });
+
+
+        $(document).on('click','.delete',function () {
+           var stuName = $(this).parent().parent().children('th')[0] ////获取账户名称
+          var studentName = $(stuName).text();
+
+             window.location = "studentManageDelete.html?studentName=" + studentName;
+
+        });
+    
+    });
+
+
+</script>
+</body>
+</html>

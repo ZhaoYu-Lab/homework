@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link href="css/bootstrap.css" rel="stylesheet">
+<title>修改学生信息</title>
+
+</head>
+
+<body>
+
+<form id="studentManageChange" class= "form-signin" action="studentManageChange.php" method="post">
+    <label for = "text">学号:</label>
+    <input type="text" id="studentNum" name="studentNum"><br>
+   <label for = "text">&nbsp;姓名 :</label>
+   <input type="text" name="studentName">
+   <label for = "text">性别:</label>
+    <input type="text" name="studentSex"><br>
+   <label for = "text">&nbsp;班级 :</label>
+   <input type= "text" name="studentClass">
+   <label for = "text">学院:</label>
+    <input type="text" name="studentDepart"><br>
+   <label for = "text">&nbsp;邮箱 :</label>
+   <input type="text" name="studentMail">
+
+    <input type="submit" id = "changeBtn" value="修改数据">
+     
+</form>
+
+<script type="text/javascript">
+
+ function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    }
+     $(function(){
+      var studentNum = getURLParameter("studentNum");
+        if(studentNum!=null){
+        alert(studentNum);
+        $("#studentNum").attr("value",studentNum);
+    }
+     else $("#studentNum").attr("value","请输入学生学号");
+
+      });
+
+ </script>
+</body>
+</html>

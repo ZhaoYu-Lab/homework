@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="jquery.js"></script>
+
+<script type="text/javascript">
+$(function(){	
+	//顶部导航切换
+	$(".nav li a").click(function(){
+		$(".nav li a.selected").removeClass("selected")
+		$(this).addClass("selected");
+	})	
+})	
+</script>
+
+
+</head>
+
+<body style="background:url(images/topbg.gif) repeat-x;">
+
+    <div class="topleft">
+    <a href="main.html" target="_parent"><img src="images/img14.png" title="系统首页" /></a>
+    </div>
+        
+            
+    <div class="topright">    
+    <ul>
+    <li><span><img src="images/help.png" title="帮助"  class="helpimg"/></span><a href="http://www.baidu.com" target="_parent">帮助</a></li>
+    <li><a href="https://www.baidu.com/s?wd=%E5%AD%A6%E7%94%9F%E8%80%83%E5%8B%A4%E7%B3%BB%E7%BB%9F&rsv_spt=1&rsv_iqid=0xe4cbbd7b00032137&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=1&rsv_sug3=24&rsv_sug1=5&rsv_sug7=100&rsv_t=b0ebqaYwBHT5gocqWYnAgnusI%2BN07U%2F%2BFrPrVO9iVBbyIIEToh8gx8OG0dKVwYQRtKm%2B&rsv_sug2=0&inputT=7743&rsv_sug4=9924" target="_parent">关于</a></li>
+
+    <li><a href="teacherLogin.html" target="_parent">退出</a></li>
+    </ul> 
+    </div>
+</body>
+</html>

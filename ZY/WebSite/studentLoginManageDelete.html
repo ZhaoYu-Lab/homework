@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>删除学生登陆账户信息</title>
+
+</head>
+
+<body>
+
+  <form class="form-signin" id="studentLoginManageDelete"  action="studentLoginManageDelete.php" method="post">
+               <label for = "studentNum">&nbsp;学生登陆账户:</label><input type="text" id="studentNum" name="studentNum"><br><br>    
+                <input type="submit" id = "deleteBtn" value="删除">
+</form>
+
+<script type="text/javascript">
+
+ function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    }
+     $(function(){
+      var studentNum = getURLParameter("studentNum");
+        if(studentNum!=null){
+        alert(studentNum);
+        $("#studentNum").attr("value",studentNum);
+    }
+     else $("#studentNum").attr("value","请输入学生登陆账户");
+
+      });
+
+ </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="jquery.min.js"></script> 
+<script type="text/javascript" src="qrcode.min.js"></script> 
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>扫码</title>
+<style type="text/css">
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+.divForm{
+    position: absolute;
+    width: 329px;
+    height: 231px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -150px;
+}
+</style>
+
+<body>
+  <!-- step="01" -->
+<div class="divForm">
+请输入课程开始时间:<input type="datetime-local" id="startTime"><br><br>
+请输入课程结束时间:<input type="datetime-local" id="endTime"><br><br>
+请输入课程编号:<input type="text" id="courseNum"><br><br>
+请输入教室编号:<input type="text" id="classNum"><br><br>
+请输入教师编号:<input type="text" id="teacherNum"><br><br>
+<button id="setQ">生成二维码</button><br>
+
+</div>
+
+ <div id="code"></div> 
+
+<script>
+
+	 $(function(){
+    
+         $("#setQ").click(function () {
+          $(".divForm").hide();
+         	var startTime = $("#startTime").val();
+         	var endTime = $("#endTime").val();
+         	var courseNum = $("#courseNum").val();
+         	var classNum = $("#classNum").val();
+         	var teacherNum = $("#teacherNum").val();
+         	if(startTime=="" || endTime=="" || courseNum=="" || classNum =="" ||teacherNum==""){
+         		alert("输入错误");
+         	}else{
+         	var content = "开始时间:"+startTime+";"+"结束时间:"+endTime+";"+"课程编号:"+courseNum+";"+"教室编号:"+classNum+";"+"教师编号:"+teacherNum+";";
+     
+               $("#code").qrcode({
+              render: "table", //table方式
+              width: 200, //宽度
+              height:200, //高度
+              text: content //任意内容
+       		  });
+           }
+
+        });
+
+     
+    });
+  
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+		<script src="jquery.min.js"></script>
+   <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>显示今日签到信息</title>
+</head>
+
+<body>
+
+
+<script type="text/javascript">
+   
+    function showAll(nowDay,NDay,YDay) {
+        var nowDay = nowDay;
+        var YDay = YDay;
+        var NDay = NDay;
+        $.ajax({
+            type: "post",//传递方法
+            url: "showAllSign.php",//数据接口
+            data: {nowDay:nowDay,YDay:YDay,NDay:NDay},//
+            dataType: "json",//回调函数接收数据的数据格式
+            success:function (msg) {
+               
+                $('table').remove();
+                $("body").append("<table id='result' class='table table-bordered'><tr><th>序号</th><th>签到时间</th><th>学生学号</th><th>课程编号</th><th>教师编号</th><th>课程开始时间</th><th>课程结束时间</th><th>学生班级</th><th>学生院系</th><th>签到状态</th><th>手机识别码</th></tr></table>");
+                for(var i =0;i<msg.length;i++)
+                {
+                    $("#result").append("<tr><th>"+msg[i]["_id"]+"</th><th>"+msg[i]['signTime']+"</th><th>"+msg[i]['studentNum']+"</th><th>"+msg[i]['courseNum']+"</th><th>"+msg[i]['teacherNum']+"</th><th>"+msg[i]['startTime']+"</th><th>"+msg[i]['endTime']+"</th><th>"+msg[i]['studentClass']+"</th><th>"+msg[i]['studentDepart']+"</th><th>"+msg[i]['classState']+"</th><th>"+msg[i]["IMEI"]+"</th></tr>");
+                }
+                if (msg.length==0){
+                    $('table').remove();
+                    $('body').append('<p>无此结果</p>');
+                }
+
+            },error:function () {
+                console.log("查询错误");
+            }
+        });
+
+    }
+    function getDay(){
+     var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+   }
+   function getYDay(){
+     var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate()-1;
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+   }
+   function getNDay(){
+     var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate()+ 1;
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+   }
+
+
+    $(function(){
+       var nowDay = getDay();
+        //alert(nowDay);
+        var NDay = getNDay();
+        var YDay = getYDay();
+        showAll(nowDay,NDay,YDay);
+
+
+      
+
+    });
+
+
+</script>
+
+</body>
+</html>

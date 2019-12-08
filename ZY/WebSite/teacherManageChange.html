@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+        <script src="jquery.min.js"></script>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link href="css/bootstrap.css" rel="stylesheet">
+<title>修改教师数据</title>
+
+</head>
+
+<body>
+<form id="teacherManageChange" class="form-signin" action="teacherManageChange.php" method="post">
+    <label for = "text">工号:</label>
+    <input type="text" id="teacherNum" name="teacherNum"><br>
+    <label for = "text">&nbsp;姓名 :</label>
+    <input type="text" name="teacherName">
+    <label for = "text">性别:</label>
+    <input type="text" name="teacherSex"><br>
+    <label for = "text">学院:</label>
+    <input type="text" name="teacherDepart"><br>
+    <input type="submit" id = "changeBtn" value="修改数据">
+</form>
+
+<script type="text/javascript">
+
+ function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    }
+     $(function(){
+      var teacherNum = getURLParameter("teacherNum");
+        if(teacherNum!=null){
+        alert(teacherNum);
+        $("#teacherNum").attr("value",teacherNum);
+    }
+     else $("#teacherNum").attr("value","请输入教师工号");
+
+      });
+
+ </script>
+
+
+</body>
+</html>
